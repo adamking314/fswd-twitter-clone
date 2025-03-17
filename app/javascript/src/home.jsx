@@ -1,31 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Layout from './layout';
-
-
+import Layout from '@src/layout';
+import Login from '@src/login/login';
 import './home.scss';
 
-const Home = () => (
-  <Router>
-  <Layout>
-  <div>
-  <h1>Twitter Clone is Showing</h1>
-  <div className="col-xs-12 post-tweet-box">
-        <textarea type="text" className="form-control post-input" rows="3" placeholder="What's happening?"></textarea>
-        <div className="pull-right">
-          <span className="post-char-counter">140</span>
-          <button className="btn btn-primary" id="post-tweet-btn">Tweet</button>
-        </div>
+
+const HomePage = () => {
+  return (
+    <div>
+      <Layout>
+        <div className="container"> 
+        <h1>Welcome to Twitter</h1>
+         <p>Make a tweet, get a following, go viral!</p>
+            <Login />
       </div>
-  </div>
-  </Layout>
-  </Router>
-)
+      </Layout>
+    </div>
+  );
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Home />,
+    <HomePage />,
     document.body.appendChild(document.createElement('div')),
   )
 })

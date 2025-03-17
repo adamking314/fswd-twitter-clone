@@ -1,5 +1,6 @@
 // layout.jsx
 import React from 'react';
+import LogOut from '@src/login/logOut';
 
 const Layout = (props) => {
   return (
@@ -13,7 +14,16 @@ const Layout = (props) => {
                 <a className="nav-link" href="/">Home</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/profile">Profile</a>
+                <a className="nav-link" href="/feed">Feed</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/user_page"> Profile</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/login"> Login</a>
+              </li>
+              <li>
+                <LogOut/>
               </li>
             </ul>
           </div>

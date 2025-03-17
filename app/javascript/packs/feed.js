@@ -1,1 +1,1 @@
-import '@src/Feed';
+import '@src/feed';
