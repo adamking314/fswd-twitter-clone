@@ -36,7 +36,7 @@ class SignupWidget extends React.Component {
       .then(handleErrors)
       .then(data => {
         if (data.user) {
-          this.login();
+          this.login(); // Proceed to login after successful signup
         }
       })
       .catch(error => {
@@ -46,35 +46,37 @@ class SignupWidget extends React.Component {
       })
   }
 
-  login = (e) => {
-    if (e) { e.preventDefault(); }
-    this.setState({
-      error: '',
-    });
-
-    fetch('/api/sessions', safeCredentials({
-      method: 'POST',
-      body: JSON.stringify({
-        user: {
-          email: this.state.email,
-          password: this.state.password,
-        }
-      })
-    }))
-      .then(handleErrors)
-      .then(data => {
-        if (data.success) {
-          const params = new URLSearchParams(window.location.search);
-          const redirect_url = params.get('redirect_url') || '/feed';
-          window.location = redirect_url;
-        }
-      })
-      .catch(error => {
-        this.setState({
-          error: 'Could not log in.',
-        })
-      })
-  }
+ login = (e) => {
+     if (e) { e.preventDefault(); }
+     this.setState({
+       error: '',
+     });
+ 
+     fetch('/api/sessions', safeCredentials({
+       method: 'POST',
+       credentials: 'include',
+       body: JSON.stringify({
+         user: {
+           username: this.state.username,
+           password: this.state.password,
+         }
+       })
+     }))
+       .then(handleErrors)
+       .then(data => {
+         if (data.success) {
+           const params = new URLSearchParams(window.location.search);
+           const redirect_url = params.get('redirect_url') || '/feed';
+           window.location = redirect_url;
+         }
+       })
+       .catch(error => {
+         this.setState({
+           error: 'Could not log in.',
+         })
+       })
+   }
+  
 
   render () {
     const { email, password, username, error } = this.state;
@@ -84,6 +86,7 @@ class SignupWidget extends React.Component {
           <input name="username" type="text" className="form-control form-control-lg mb-3" placeholder="Username" value={username} onChange={this.handleChange} required />
           <input name="email" type="text" className="form-control form-control-lg mb-3" placeholder="Email" value={email} onChange={this.handleChange} required />
           <input name="password" type="password" className="form-control form-control-lg mb-3" placeholder="Password" value={password} onChange={this.handleChange} required />
+          <p> Minimum 8 characters</p>
           <button type="submit" className="btn btn-danger btn-block btn-lg">Sign up</button>
         </form>
         <hr/>
