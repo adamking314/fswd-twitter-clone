@@ -84,7 +84,7 @@ export var authenticateUser = function (callback) {
 export var getTweets = function (callback) {
   var request = {
     type: 'GET',
-    url: 'api/tweets',
+    url: '/api/tweets',
     success: function (response) {
       callback(response);
     }

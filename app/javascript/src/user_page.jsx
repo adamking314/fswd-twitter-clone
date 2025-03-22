@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { getUsersTweets, postTweet } from '/app/javascript/packs/request.js';
 import Layout from './layout';
 import { getCurrentUser, countUsersTweets } from '/app/javascript/packs/utils';
-import './feed.scss';
+import './user_page.scss';
 import { safeCredentials, handleErrors } from '@src/utils/fetchHelper';
 
 const UserPage = () => {
