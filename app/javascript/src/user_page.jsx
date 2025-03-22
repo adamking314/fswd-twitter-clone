@@ -22,14 +22,13 @@ const UserPage = () => {
     });
   }, []);
 
-  const postTweetHandler = (event) => {
-    event.preventDefault();
-    if (!newTweet.trim()) return;
-
-    postTweet(newTweet, (response) => {
-      if (!response.success) {
-        setErrorMessage("Error posting tweet. Try again.");
-      } else {
+ const postTweetHandler = function (event) {
+     event.preventDefault();
+     
+     postTweet(newTweet, function (response) {
+       if (response.success == false) {
+         setErrorMessage("Sorry, there was an error posting your tweet. Please try again");
+       } else {
         setErrorMessage("");
         getUsersTweets(currentUser, (res) => setTweets(res.tweets));
         setNewTweet("");
