@@ -69,6 +69,7 @@ const Feed = () => {
   }, []);
 
   return(
+    <React.Fragment>
       <Layout>
         <h1> Twitter Clone Feed </h1>
       <div id="feed" className="container">
@@ -136,6 +137,7 @@ const Feed = () => {
         </div>
       </div>
       </Layout>
+    </React.Fragment>
   )
 }
 
