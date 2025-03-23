@@ -19,9 +19,6 @@ const Layout = (props) => {
               <li className="nav-item">
                 <a className="nav-link" href="/user_page"> Profile</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/login"> Login</a>
-              </li>
               <li>
                 <LogOut/>
               </li>

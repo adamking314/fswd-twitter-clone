@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { getUsersTweets, postTweet } from '/app/javascript/packs/request.js';
+import { getUsersTweets, postTweet, deleteTweet } from '/app/javascript/packs/request.js';
 import Layout from './layout';
 import { getCurrentUser, countUsersTweets } from '/app/javascript/packs/utils';
 import './user_page.scss';
@@ -37,7 +37,18 @@ const UserPage = () => {
       }
     });
   };
-
+  const deleteTweetHandler = function (event) {
+    event.preventDefault();
+    
+    const id = event.target.dataset.id;
+    
+    deleteTweet(id, function () {
+      getUsersTweets(currentUser, (res) => setTweets(res.tweets));
+      countUsersTweets(currentUser, setTweetCount);
+    });
+  };
+  
+  
   return (
     <Layout>
       <h1>@{currentUser}'s Tweets</h1>
@@ -81,6 +92,7 @@ const UserPage = () => {
                 <a href={`/${tweet.username}`} className="fw-light ps-1">@{tweet.username}</a>
                 <p className="d-inline date ps-1">{tweet.created_at}</p>
                 <p className="pt-3 fw-light">{tweet.message}</p>
+                <button className="btn btn-sm d-flex ms-auto delete-btn" data-id={tweet.id} onClick={deleteTweetHandler}> Delete </button>
               </div>
             ))}
           </div>
