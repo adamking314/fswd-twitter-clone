@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
 import Login from '@src/login/login';
-import './home.scss';
+import './stylesheet.scss';
 
 
 const HomePage = () => {

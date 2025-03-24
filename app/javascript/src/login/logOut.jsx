@@ -1,6 +1,7 @@
 // LogoutFunction.jsx
 import React from 'react';
 import { safeCredentials, handleErrors } from '@src/utils/fetchHelper';
+import './login.scss';
 
 class LogoutFunction extends React.Component {
   logout = () => {
@@ -19,7 +20,7 @@ class LogoutFunction extends React.Component {
 
   render() {
     return (
-      <button onClick={this.logout} className="btn btn-danger">Logout</button>
+      <button onClick={this.logout} className="log-out-btn btn btn-danger">Logout</button>
     );
   }
 }

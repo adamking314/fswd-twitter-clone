@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { getUsersTweets, postTweet, deleteTweet } from '/app/javascript/packs/request.js';
 import Layout from './layout';
 import { getCurrentUser, countUsersTweets } from '/app/javascript/packs/utils';
-import './user_page.scss';
+import './stylesheet.scss';
 import { safeCredentials, handleErrors } from '@src/utils/fetchHelper';
 
 const UserPage = () => {
@@ -63,7 +63,7 @@ const UserPage = () => {
             </ul>
           </div>
           <div className='col-6'>
-            <form onSubmit={postTweetHandler}>
+            <form className='tweet-form' onSubmit={postTweetHandler}>
               <textarea
                 className="form-control tweet-box"
                 value={newTweet}
@@ -89,7 +89,6 @@ const UserPage = () => {
             {tweets.map((tweet) => (
               <div className="tweet p-3 pb-0" key={tweet.id}>
                 <p className="fw-bold d-inline">{tweet.username}</p>
-                <a href={`/${tweet.username}`} className="fw-light ps-1">@{tweet.username}</a>
                 <p className="d-inline date ps-1">{tweet.created_at}</p>
                 <p className="pt-3 fw-light">{tweet.message}</p>
                 <button className="btn btn-sm d-flex ms-auto delete-btn" data-id={tweet.id} onClick={deleteTweetHandler}> Delete </button>

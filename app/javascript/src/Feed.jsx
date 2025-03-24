@@ -5,7 +5,7 @@ import Layout from './layout';
 import { getCurrentUser, countUsersTweets } from '/app/javascript/packs/utils';
 import { safeCredentials, handleErrors } from '@src/utils/fetchHelper';
 
-import './feed.scss';
+import './stylesheet.scss';
 
 const Feed = () => {
 
@@ -86,7 +86,7 @@ const Feed = () => {
             </ul>
           </div>
           <div className='col-6'>
-            <form onSubmit={postTweetHandler}>
+            <form className='tweet-form' onSubmit={postTweetHandler}>
               <textarea
                 className="form-control tweet-box"
                 id="tweetInput"
